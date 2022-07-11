@@ -1,11 +1,29 @@
-const Header = () => {
-
+import React from 'react'
+import NewBudget from './NewBudget'
+import BudgetControl from './BudgetControl'
+const Header = ({budget,setBudget,validBudget,setValidBudget,spents,setSpents}) => {
     return (
-            <h1 className='font-black text-5xl text-center md:w-1/2 mx-auto'>
-                Patients {' '}
-                <span className='text-indigo-600'>Veterinary</span>
-            </h1>
+        <header>
+            <h1>Budget Manager</h1>
+            {validBudget ? 
+                <BudgetControl
+                    budget = {budget}
+                    setBudget = {setBudget}
+                    spents = {spents}
+                    setSpents = {setSpents}
+                    setValidBudget = {setValidBudget}
+                    
+                />
+                :
+                (<NewBudget 
+                    budget={budget}
+                    setBudget={setBudget}
+                    setValidBudget ={setValidBudget}
+                />)
+            }
+
+        </header>
     )
 }
 
-export default Header;
+export default Header
